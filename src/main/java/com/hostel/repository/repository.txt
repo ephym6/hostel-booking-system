@@ -1,0 +1,6 @@
+Interfaces for each entity to handle CRUD operations:
+- StudentRepository
+- AdminRepository
+- RoomRepository
+- BookingRepository
+- NotificationRepository
