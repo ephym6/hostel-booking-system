@@ -5,6 +5,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping
-public class StudentController {
-    //Student actions (register, login, book room, view status)
+public class RoomController {
+    //Display available rooms, filter/search
 }
