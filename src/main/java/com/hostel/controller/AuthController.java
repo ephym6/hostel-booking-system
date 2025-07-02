@@ -1,21 +1,50 @@
 package com.hostel.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import com.hostel.dto.LoginDTO;
+import com.hostel.model.Admin;
+import com.hostel.model.Student;
+import com.hostel.service.AuthService;
 
 @RestController
-@RequestMapping
+@RequestMapping("/api/auth")  // Fixed typo from "/api/auto"
 public class AuthController {
-    /*
-    🎯 Purpose:
-Handles all authentication-related routes:
 
-Login (student/admin)
+    private final AuthService authService;
 
-Registration (student/admin)
+    @Autowired
+    public AuthController(AuthService authService) {
+        this.authService = authService;
+    }
 
-Logout (if implemented later)
+    @PostMapping("/student/register")
+    public ResponseEntity<?> registerStudent(@RequestBody Student student) {
+        return authService.registerStudent(student);  // Fixed method name
+    }
 
-Password reset (optional)
-     */
+    @PostMapping("/student/login")
+    public ResponseEntity<?> loginStudent(@RequestBody LoginDTO loginDTO) {
+        return authService.loginStudent(loginDTO);  // Fixed method name and return type
+    }
+
+    @PostMapping("/admin/register")
+    public ResponseEntity<?> registerAdmin(@RequestBody Admin admin) {
+        return authService.registerAdmin(admin);  // Fixed method name
+    }
+
+    @PostMapping("/admin/login")
+    public ResponseEntity<?> loginAdmin(@RequestBody LoginDTO loginDTO) {
+        return authService.loginAdmin(loginDTO);  // Fixed method name and return type
+    }
 }
+
+  
+
+
+
+
+    
+    
+   
