@@ -1,6 +1,7 @@
 package com.hostel.model;
 
 import jakarta.persistence.*;
+import jakarta.persistence.MappedSuperclass;
 
 @MappedSuperclass
 public abstract class User {

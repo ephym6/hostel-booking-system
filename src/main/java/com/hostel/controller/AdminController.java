@@ -6,4 +6,5 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping
 public class AdminController {
+    //Admin actions (approve/reject bookings, manage rooms)
 }

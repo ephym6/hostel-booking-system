@@ -2,6 +2,7 @@ package com.hostel.model;
 
 import jakarta.persistence.*;
 import java.util.List;
+import jakarta.persistence.Entity;
 
 @Entity
 public class Room {
