@@ -9,7 +9,7 @@
 <h2 class="section-title">Booking Requests</h2>
 <div id="booking-list" class="card-container"></div>
 <script>
-    fetch('/api/admin/bookings')
+    fetch('/admin/bookings')
         .then(res => res.json())
         .then(data => {
             const list = document.getElementById('booking-list');
