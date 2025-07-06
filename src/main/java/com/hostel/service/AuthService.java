@@ -2,14 +2,12 @@ package com.hostel.service;
 
 import com.hostel.model.Admin;
 import com.hostel.model.Student;
-import com.hostel.dto.LoginDTO;
-import org.springframework.http.ResponseEntity;
 
 public interface AuthService {
-    ResponseEntity<?> registerStudent(Student student);
-    ResponseEntity<?> loginStudent(LoginDTO dto);
-    ResponseEntity<?> registerAdmin(Admin admin);
-    ResponseEntity<?> loginAdmin(LoginDTO dto);
+    String registerStudent(Student student);
+    String loginStudent(Student student);
+    String registerAdmin(Admin admin);
+    String loginAdmin(Admin admin);
 }
 
     /*
@@ -23,4 +21,3 @@ Encrypting passwords (optional)
 
 Returning response messages or tokens (if used)
      */
-
