@@ -20,23 +20,23 @@ public class AuthController {
     }
 
     @PostMapping("/student/register")
-    public ResponseEntity<?> registerStudent(@RequestBody Student student) {
-        return authService.registerStudent(student);  // Fixed method name
+    public ResponseEntity<String> registerStudent(@RequestBody Student student) {
+        return  ResponseEntity.ok(authService.registerStudent(student));  // Fixed method name
     }
 
     @PostMapping("/student/login")
-    public ResponseEntity<?> loginStudent(@RequestBody LoginDTO loginDTO) {
-        return authService.loginStudent(loginDTO);  // Fixed method name and return type
+    public ResponseEntity<String> loginStudent(@RequestBody Student student) {
+        return ResponseEntity.ok(authService.loginStudent(student));  // Fixed method name and return type
     }
 
     @PostMapping("/admin/register")
-    public ResponseEntity<?> registerAdmin(@RequestBody Admin admin) {
-        return authService.registerAdmin(admin);  // Fixed method name
+    public ResponseEntity<String> registerAdmin(@RequestBody Admin admin) {
+        return ResponseEntity.ok(authService.registerAdmin(admin));  // Fixed method name
     }
 
     @PostMapping("/admin/login")
-    public ResponseEntity<?> loginAdmin(@RequestBody LoginDTO loginDTO) {
-        return authService.loginAdmin(loginDTO);  // Fixed method name and return type
+    public ResponseEntity<String> loginAdmin(@RequestBody Admin admin) {
+        return ResponseEntity.ok(authService.loginAdmin(admin));  // Fixed method name and return type
     }
 }
 

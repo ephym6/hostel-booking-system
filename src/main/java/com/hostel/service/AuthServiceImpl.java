@@ -1,4 +1,3 @@
-
 package com.hostel.service;
 
 import com.hostel.model.Admin;
@@ -8,8 +7,6 @@ import com.hostel.repository.AdminRepository;
 import com.hostel.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.hostel.dto.LoginDTO;
-import com.hostel.repository.AdminRepository;
-import com.hostel.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,14 +16,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class AuthServiceImpl implements AuthService {
 
-    @Autowired
-    private StudentRepository studentRepo;
 
-    @Autowired
-    private StudentRepository studentRepo;
+    private final StudentRepository studentRepo;
 
-    @Autowired
-    private AdminRepository adminRepo;
+    private final AdminRepository adminRepo;
+
+    public AuthServiceImpl(StudentRepository studentRepo, AdminRepository adminRepo) {
+    this.studentRepo = studentRepo;
+    this.adminRepo = adminRepo;
+    }
 
     @Override
     public String registerStudent(Student student) {
@@ -40,7 +38,8 @@ public class AuthServiceImpl implements AuthService {
         if (found != null && found.getPassword().equals(student.getPassword())) {
             return "Login successful";
         }
-        return "Invalid credentials";
+        //return "Invalid credentials";
+        throw new SecurityException("Invalid credentials for student login.");
     }
 
     @Override
@@ -55,8 +54,11 @@ public class AuthServiceImpl implements AuthService {
         if (found != null && found.getPassword().equals(admin.getPassword())) {
             return "Login successful";
         }
-        return "Invalid credentials";
+        //return "Invalid credentials";
+        throw new SecurityException("Invalid credentials for admin login.");
+    }
 
+    /*
     public ResponseEntity<?> registerStudent(Student student) {
         studentRepo.save(student);
         return ResponseEntity.ok("Student registered successfully.");
@@ -85,6 +87,7 @@ public class AuthServiceImpl implements AuthService {
         }
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials.");
     }
+     */
 }
 
 

@@ -2,7 +2,6 @@ package com.hostel.controller;
 
 import com.hostel.model.Notification;
 import com.hostel.service.NotificationService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,8 +13,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/notifications")
 public class NotificationController {
-    @Autowired
-    private NotificationService notificationService;
+
+    private final NotificationService notificationService;
+
+    public NotificationController(NotificationService notificationService) {
+        this.notificationService = notificationService;
+    }
 
     @GetMapping("/unseen/{studentId}")
     public ResponseEntity<?> getUnseen(@PathVariable Long studentId) {

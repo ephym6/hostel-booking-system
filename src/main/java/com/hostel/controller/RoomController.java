@@ -12,20 +12,33 @@ import java.util.List;
 @RequestMapping("/api/rooms")
 public class RoomController {
 
-    @Autowired
-    private RoomService roomService;
+    private final RoomService roomService;
+
+    public RoomController(RoomService roomService) {
+        this.roomService = roomService;
+    }
 
     // Get all rooms
     @GetMapping("/all")
+    public List<Room> getAllRooms() {
+        return roomService.getAllRooms();
+    }
+    /*
     public ResponseEntity<List<Room>> getAllRooms() {
         List<Room> rooms = roomService.getAllRooms();
         return ResponseEntity.ok(rooms);
     }
+     */
 
     // Get only available rooms
     @GetMapping("/available")
+    public List<Room> getAvailableRooms() {
+        return roomService.getAvailableRooms();
+    }
+    /*
     public ResponseEntity<List<Room>> getAvailableRooms() {
         List<Room> availableRooms = roomService.getAvailableRooms();
         return ResponseEntity.ok(availableRooms);
     }
+     */
 }

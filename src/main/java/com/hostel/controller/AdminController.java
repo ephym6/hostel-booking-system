@@ -1,6 +1,7 @@
 package com.hostel.controller;
 
 import com.hostel.model.Booking;
+import com.hostel.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,8 +13,12 @@ import java.util.List;
 public class AdminController {
     //Admin actions (approve/reject bookings, manage rooms)
 
+    private final AdminService adminService;
+
     @Autowired
-    private AdminService adminService;
+    public AdminController(AdminService adminService) {
+        this.adminService = adminService;
+    }
 
     @GetMapping("/bookings")
     public List<Booking> getAllBookings() {
