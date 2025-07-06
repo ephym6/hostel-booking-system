@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Book Room</title>
-    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 <div class="form-container">
-    <form action="/api/students/book" method="POST">
+    <form action="/students/book/" method="POST">
         <h2>Book a Room</h2>
         <label>Student ID:</label>
         <input type="text" name="studentId" required>
