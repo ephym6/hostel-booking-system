@@ -1,5 +1,5 @@
 /* Create database */
-CREATE DATABASE hostel_db;
+CREATE DATABASE hostel_db; /* name database 'hostel_db' */
 USE hostel_db;
 
 /* Create these 5 sql tables */
