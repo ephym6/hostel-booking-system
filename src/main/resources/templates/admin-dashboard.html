@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+<h2 class="section-title">Booking Requests</h2>
+<div id="booking-list" class="card-container"></div>
+<script>
+    fetch('/api/admin/bookings')
+        .then(res => res.json())
+        .then(data => {
+            const list = document.getElementById('booking-list');
+            data.forEach(booking => {
+                list.innerHTML += `<div class='card'>
+            <p><strong>Booking ID:</strong> ${booking.id}</p>
+            <p><strong>Student:</strong> ${booking.student.name}</p>
+            <p><strong>Status:</strong> ${booking.status}</p>
+            <button onclick="approve(${booking.id})">Approve</button>
+            <button onclick="reject(${booking.id})">Reject</button>
+          </div>`;
+            });
+        });
+
+    function approve(id) {
+        fetch(`/api/admin/approve/${id}`, { method: 'POST' })
+            .then(() => location.reload());
+    }
+    function reject(id) {
+        fetch(`/api/admin/reject/${id}`, { method: 'POST' })
+            .then(() => location.reload());
+    }
+</script>
+</body>
+</html>

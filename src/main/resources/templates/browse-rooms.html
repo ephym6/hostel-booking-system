@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Browse Rooms</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+<h2 class="section-title">Available Rooms</h2>
+<div id="room-list" class="card-container"></div>
+<script>
+    fetch('/api/rooms/available')
+        .then(res => res.json())
+        .then(data => {
+            const container = document.getElementById('room-list');
+            data.forEach(room => {
+                container.innerHTML += `<div class='card'>
+            <h3>Type: ${room.type}</h3>
+            <p>Gender: ${room.gender}</p>
+            <p>Price: $${room.price}</p>
+          </div>`;
+            });
+        });
+</script>
+</body>
+</html>
