@@ -1,9 +1,9 @@
 package com.hostel.repository;
 
 import com.hostel.model.Student;
-import org.springframework.data.repository.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface StudentRepository extends Repository<Student, Long> {
+public interface StudentRepository extends JpaRepository<Student, Long> {
     // Add custom query methods if needed
     Student findByEmail(String email);
 }

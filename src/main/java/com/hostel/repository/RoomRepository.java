@@ -1,11 +1,11 @@
 package com.hostel.repository;
 
 import com.hostel.model.Room;
-import org.springframework.data.repository.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface RoomRepository extends Repository<Room, Long> {
+public interface RoomRepository extends JpaRepository<Room, Long> {
     List<Room> findByAvailableTrue();
-    List<Room> findByGender(String gender);
+    // List<Room> findByGender(String gender);
 }
