@@ -1,4 +1,9 @@
+package com.hostel.dto;
 
+public class LoginDTO{
+    private String email;
+    private String password;
+    
     // Default constructor
     public LoginDTO() {}
 
