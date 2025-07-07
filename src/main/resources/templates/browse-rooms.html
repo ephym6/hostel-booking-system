@@ -23,7 +23,7 @@
 
     <!-- Placeholder cards (in case fetch fails or slow) -->
     <div class='card placeholder'>
-      <img src='/images/room1.jpg' alt='Sample Room' class='room-img'/>
+      <img src='/images/twin-room2.jpeg' alt='Sample Room' class='room-img'/>
       <div class='card-body'>
         <h3>Single Room</h3>
         <p><strong>Gender:</strong> Female</p>
@@ -33,7 +33,7 @@
       </div>
     </div>
     <div class='card placeholder'>
-      <img src='/images/room2.jpg' alt='Sample Room' class='room-img'/>
+      <img src='/images/double1.jpeg' alt='Sample Room' class='room-img'/>
       <div class='card-body'>
         <h3>Double Room</h3>
         <p><strong>Gender:</strong> Male</p>
@@ -51,25 +51,32 @@
 
 <script>
   fetch('/api/rooms/available')
-          .then(res => res.json())
+          .then(res => {
+                  if (!res.ok) throw new Error('Failed to load rooms');
+                  return res.json();
+          })
           .then(data => {
+            if (!Array.isArray(data)) throw new Error("Invalid response format");
+
             const container = document.getElementById('room-list');
             container.innerHTML = ''; // Clear placeholder
             if (data.length === 0) {
               container.innerHTML = '<p class="no-rooms">No rooms available at the moment. Please check back later.</p>';
             } else {
               const images = [
-                '/images/room1.jpg',
-                '/images/room2.jpg',
-                '/images/room3.jpg',
-                '/images/room4.jpg'
+                '/images/single1.jpeg',
+                '/images/double2.jpeg',
+                '/images/twin-room2.jpeg',
+                '/images/double1.jpeg',
+                      '/images/modern.jpeg',
+                      '/images/modern.jpeg'
               ];
 
               data.forEach((room, i) => {
                 const img = images[i % images.length];
                 container.innerHTML += `
             <div class='card'>
-              <img src='${img}' alt='Room Image' class='room-img'/>
+              <img src='${img}' onerror="this.src='/images/double1.jpeg'" alt='Room Image' class='room-img'/>
               <div class='card-body'>
                 <h3>${room.type}</h3>
                 <p><strong>Gender:</strong> ${room.gender}</p>

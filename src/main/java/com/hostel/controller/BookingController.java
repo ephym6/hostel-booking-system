@@ -23,12 +23,20 @@ public class BookingController {
         this.bookingService = bookingService;
     }
 
+    // Load form
     @GetMapping("/book-room")
     public String showBookingPage(@RequestParam("roomId") Long roomId, Model model) {
         model.addAttribute("roomId", roomId);
         return "book-room";
     }
 
+    // Success page
+    @GetMapping("/booking-success")
+    public String bookingSuccess() {
+        return "booking-success";
+    }
+
+    // Handle booking submission
     @PostMapping("/book-room")
     public String bookRoom(@RequestParam("roomId") Long roomId,
                            Authentication auth,
@@ -40,10 +48,10 @@ public class BookingController {
         try {
             Booking booking = bookingService.createBooking(student.getId(), roomId);
             redirectAttributes.addFlashAttribute("message", "Room booked successfully with status: " + booking.getStatus());
+            return "redirect:/booking-success";
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("error", "Booking failed: " + e.getMessage());
+            return "redirect:/book-room?roomId=" + roomId;
         }
-
-        return "redirect:/book-room";
     }
 }

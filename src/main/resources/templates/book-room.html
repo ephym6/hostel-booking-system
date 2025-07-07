@@ -16,13 +16,17 @@
 </header>
 
 <main>
+  <!-- Show error if any -->
+  <div th:if="${error}" style="color: red;">
+    <p th:text="${error}"></p>
+  </div>
   <div class="form-container">
     <form th:action="@{/book-room}" method="POST">
       <h2>Reservation Form</h2>
       <label for="roomId">Room ID</label>
       <input type="hidden" id="roomId" name="roomId" th:value="${roomId}">
 
-      <button type="submit" class="btn">Book Room</button>
+      <button type="submit" class="btn">Confirm Booking</button>
     </form>
   </div>
 </main>
