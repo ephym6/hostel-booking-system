@@ -36,22 +36,5 @@ public class AdminController {
         adminService.rejectBooking(bookingId);
         return ResponseEntity.ok("Booking rejected");
     }
-    //AJAX addition
-     if (request.getContentType() != null && request.getContentType().contains("application/json")) {
-        // Re-validate with JSON data
-        LoginDTO loginDTO = new Gson().fromJson(request.getReader(), LoginDTO.class);
-        user = UserDAO.validate(loginDTO.getEmail(), loginDTO.getPassword());
-
-        // Prepare JSON response
-        response.setContentType("application/json");
-        PrintWriter out = response.getWriter();
-        
-        if (user != null) {
-            request.getSession().setAttribute("user", user); // Maintain session
-            out.print("{\"success\":true, \"redirectUrl\":\"dashboard.jsp\"}");
-        } else {
-            out.print("{\"success\":false, \"message\":\"Invalid credentials\"}");
-        }
-        return; // Important: Skip the original response
-
+    
 }
