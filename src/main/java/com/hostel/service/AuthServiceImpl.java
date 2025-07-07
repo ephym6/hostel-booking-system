@@ -39,6 +39,7 @@ public class AuthServiceImpl implements AuthService {
         }
         student.setPassword(passwordEncoder.encode(student.getPassword()));
         studentRepo.save(student);
+        System.out.println("Saved student: " + studentRepo.findByEmail(student.getEmail()));
         return "Student registered successfully";
     }
 
