@@ -15,7 +15,9 @@
       <a th:href="@{/login}" sec:authorize="isAnonymous()">Login</a>
       <a th:href="@{/register}">Register</a>
       <a th:href="@{/browse-rooms}">Browse Rooms</a>
+      <!--
       <a th:href="@{/book-room}" sec:authorize="isAuthenticated()" >Book a Room</a>
+      -->
       <a th:href="@{/logout}" sec:authorize="isAuthenticated()">Logout</a>
     </nav>
   </div>

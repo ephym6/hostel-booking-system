@@ -17,13 +17,10 @@
 
 <main>
   <div class="form-container">
-    <form action="/api/students/book" method="POST">
+    <form th:action="@{/book-room}" method="POST">
       <h2>Reservation Form</h2>
-      <label for="studentId">Student ID</label>
-      <input type="text" id="studentId" name="studentId" placeholder="Enter your student ID" required>
-
       <label for="roomId">Room ID</label>
-      <input type="text" id="roomId" name="roomId" placeholder="Enter the room ID" required>
+      <input type="hidden" id="roomId" name="roomId" th:value="${roomId}">
 
       <button type="submit" class="btn">Book Room</button>
     </form>

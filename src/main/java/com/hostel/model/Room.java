@@ -1,5 +1,6 @@
 package com.hostel.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.util.List;
 import jakarta.persistence.Entity;
@@ -22,6 +23,7 @@ public class Room {
 
     // One room can have many bookings
     @OneToMany
+    @JsonIgnore
     private List<Booking> bookings;
 
     // Getters and setters

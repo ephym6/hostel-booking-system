@@ -41,7 +41,7 @@ public class SecurityConfig {
                         .loginProcessingUrl("/login") // optional if your form posts to /login
                         .usernameParameter("email") // 👈 tell Spring to use "email" instead of "username"
                         .passwordParameter("password") // optional, but good practice
-                        .defaultSuccessUrl("/book-room", true)
+                        .defaultSuccessUrl("/browse-rooms", true)
                         .permitAll()
                 )
                 .logout(logout -> logout
