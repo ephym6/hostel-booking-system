@@ -21,21 +21,21 @@
       <h4 class="mb-3">All Bookings</h4>
 
       <div class="table-responsive">
-        <table class="table table-bordered table-hover">
+        <table class="table table-bordered table-hover align-middle">
           <thead class="table-light">
             <tr>
               <th>User</th>
-              <th>Room Number</th>
-              <th>Check-in</th>
-              <th>Check-out</th>
+              <th>Room</th>
+              <th>Check-In</th>
+              <th>Check-Out</th>
             </tr>
           </thead>
           <tbody>
             <tr th:each="booking : ${bookings}">
               <td th:text="${booking.user.name}">John Doe</td>
-              <td th:text="${booking.roomNumber}">101</td>
+              <td th:text="${booking.room.name}">Room A</td>
               <td th:text="${booking.checkInDate}">2025-07-01</td>
-              <td th:text="${booking.checkOutDate}">2025-07-03</td>
+              <td th:text="${booking.checkOutDate}">2025-07-05</td>
             </tr>
           </tbody>
         </table>
@@ -48,6 +48,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
 
 
 <!-- Bootstrap JS -->
