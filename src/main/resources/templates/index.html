@@ -1,6 +1,6 @@
 <!-- Updated: index.html -->
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
   <meta charset="UTF-8">
   <title>Hostel Booking System</title>
@@ -12,9 +12,11 @@
     <h1>Hostel Booking System</h1>
     <p class="slogan">Your Comfort, Our Priority</p>
     <nav>
-      <a th:href="@{/login}">Login</a>
+      <a th:href="@{/login}" sec:authorize="isAnonymous()">Login</a>
       <a th:href="@{/register}">Register</a>
       <a th:href="@{/browse-rooms}">Browse Rooms</a>
+      <a th:href="@{/book-room}" sec:authorize="isAuthenticated()" >Book a Room</a>
+      <a th:href="@{/logout}" sec:authorize="isAuthenticated()">Logout</a>
     </nav>
   </div>
 </header>
