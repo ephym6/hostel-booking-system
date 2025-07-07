@@ -1,41 +1,53 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Admin Dashboard</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>User Dashboard</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-    <link rel="stylesheet" href="/css/style.css">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-<h2 class="section-title">Booking Requests</h2>
-<div id="booking-list" class="card-container"></div>
-<script>
-    fetch('/admin/bookings')
-        .then(res => res.json())
-        .then(data => {
-            const list = document.getElementById('booking-list');
-            data.forEach(booking => {
-                list.innerHTML += `<div class='card'>
-            <p><strong>Booking ID:</strong> ${booking.id}</p>
-            <p><strong>Student:</strong> ${booking.student.name}</p>
-            <p><strong>Status:</strong> ${booking.status}</p>
-            <button onclick="approve(${booking.id})">Approve</button>
-            <button onclick="reject(${booking.id})">Reject</button>
-          </div>`;
-            });
-        });
+<body class="bg-light">
 
-    function approve(id) {
-        fetch(`/api/admin/approve/${id}`, { method: 'POST' })
-            .then(() => location.reload());
-    }
-    function reject(id) {
-        fetch(`/api/admin/reject/${id}`, { method: 'POST' })
-            .then(() => location.reload());
-    }
-</script>
+<div class="container mt-5">
+  <h2 class="text-center mb-4">User Dashboard</h2>
+
+  <div class="mb-3 text-end">
+    <a th:href="@{/logout}" class="btn btn-outline-danger btn-sm">Logout</a>
+  </div>
+
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h4 class="mb-3" th:text="'Welcome, ' + ${user.name} + '!'">Welcome, User!</h4>
+
+      <a th:href="@{/book}" class="btn btn-primary mb-4">Book a Room</a>
+
+      <h5>Your Bookings:</h5>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover mt-3">
+          <thead class="table-light">
+            <tr>
+              <th>Room Number</th>
+              <th>Check-in</th>
+              <th>Check-out</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="booking : ${bookings}">
+              <td th:text="${booking.roomNumber}">101</td>
+              <td th:text="${booking.checkInDate}">2025-07-01</td>
+              <td th:text="${booking.checkOutDate}">2025-07-03</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
