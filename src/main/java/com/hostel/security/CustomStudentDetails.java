@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import java.util.Collection;
 import java.util.Collections;
 
-@Service
 public class CustomStudentDetails implements UserDetails {
     private final Student student;
 
@@ -18,7 +17,7 @@ public class CustomStudentDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.emptyList(); // or add roles later
+        return Collections.emptyList(); // or add roles later eg List.of(new SimpleGrantedAuthority("ROLE_STUDENT"))
     }
 
     @Override
