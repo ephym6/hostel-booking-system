@@ -1,9 +1,9 @@
 package com.hostel.dto;
 
-public class LoginDTO {
+public class LoginDTO{
     private String email;
     private String password;
-
+    
     // Default constructor
     public LoginDTO() {}
 
@@ -29,4 +29,5 @@ public class LoginDTO {
     public void setPassword(String password) {
         this.password = password;
     }
+
 }

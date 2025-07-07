@@ -36,5 +36,5 @@ public class AdminController {
         adminService.rejectBooking(bookingId);
         return ResponseEntity.ok("Booking rejected");
     }
-
+    
 }
