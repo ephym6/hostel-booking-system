@@ -17,27 +17,20 @@
         <div class="card-body">
           <h3 class="text-center mb-4">Book a Room</h3>
 
-          <form th:action="@{/book-room}" method="post" th:object="${booking}">
-            <div class="mb-3">
-              <label for="roomId" class="form-label">Room</label>
-              <select class="form-select" id="roomId" th:field="*{roomId}" required>
-                <option value="" disabled selected>Select a room</option>
-                <option th:each="room : ${rooms}" th:value="${room.id}" th:text="${room.name}">Room A</option>
-              </select>
-            </div>
+<form th:action="@{/students/book/{studentId}/{roomId}(studentId=${student.id}, roomId=${room.id})}" method="post">
+  <div class="mb-3">
+    <label for="roomId" class="form-label">Room ID</label>
+    <input type="text" class="form-control" id="roomId" name="roomId" th:value="${room.id}" readonly>
+  </div>
+  
+  <div class="mb-3">
+    <label for="studentId" class="form-label">Your Student ID</label>
+    <input type="text" class="form-control" id="studentId" name="studentId" th:value="${student.id}" readonly>
+  </div>
 
-            <div class="mb-3">
-              <label for="checkIn" class="form-label">Check-in Date</label>
-              <input type="date" class="form-control" id="checkIn" th:field="*{checkInDate}" required>
-            </div>
+  <button type="submit" class="btn btn-primary">Book Now</button>
+</form>
 
-            <div class="mb-3">
-              <label for="checkOut" class="form-label">Check-out Date</label>
-              <input type="date" class="form-control" id="checkOut" th:field="*{checkOutDate}" required>
-            </div>
-
-            <button type="submit" class="btn btn-primary w-100">Book Now</button>
-          </form>
 
           <div class="mt-3 text-center">
             <a th:href="@{/browse-rooms}">← Browse Other Rooms</a>
