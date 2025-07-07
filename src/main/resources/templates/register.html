@@ -1,11 +1,26 @@
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="../static/css/style.css">
 </head>
 <body>
-@@ -24,4 +27,4 @@ <h2>Student Registration</h2>
+<div class="form-container">
+    <form action="/api/auth/student/register" method="POST">
+        <h2>Student Registration</h2>
+        <label>Name:</label>
+        <input type="text" name="name" required>
+        <label>Email:</label>
+        <input type="email" name="email" required>
+        <label>Password:</label>
+        <input type="password" name="password" required>
+        <label>Gender:</label>
+        <select name="gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+        <button type="submit">Register</button>
     </form>
 </div>
 </body>
