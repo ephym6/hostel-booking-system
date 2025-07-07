@@ -8,16 +8,29 @@
 
     <link rel="stylesheet" href="/css/style.css">
 </head>
-<body>
-<div class="form-container">
-    <form action="/api/auth/student/login" method="POST">
-        <h2>Student Login</h2>
-        <label>Email:</label>
-        <input type="email" name="email" required>
-        <label>Password:</label>
-        <input type="password" name="password" required>
-        <a href="/browse-rooms"><button type="submit">Login</button></a>
-    </form>
-</div>
+<body class="bg-light">
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-4">
+        <div class="card shadow">
+          <div class="card-body">
+            <h3 class="text-center mb-4">Login</h3>
+            <form th:action="@{/login}" method="post">
+              <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+              </div>
+              <button type="submit" class="btn btn-primary w-100">Login</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
+
 </html>
