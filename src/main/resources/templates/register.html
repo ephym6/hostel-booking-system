@@ -3,23 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/register.css">
 </head>
 <body>
 <div class="form-container">
     <form action="/student/register" method="POST">
         <h2>Student Registration</h2>
-        <label>Name:</label>
-        <input type="text" name="name" required>
-        <label>Email:</label>
-        <input type="email" name="email" required>
-        <label>Password:</label>
-        <input type="password" name="password" required>
-        <label>Gender:</label>
-        <select name="gender">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+
+        <label for="gender">Gender</label>
+        <select id="gender" name="gender">
             <option value="Male">Male</option>
             <option value="Female">Female</option>
         </select>
+
         <button type="submit">Register</button>
     </form>
 </div>

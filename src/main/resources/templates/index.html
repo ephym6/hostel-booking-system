@@ -1,22 +1,43 @@
+<!-- Updated: index.html -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>Hostel Booking System</title>
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
 <header class="main-header">
-  <h1>Welcome to Hostel Booking System</h1>
-  <nav class="main-nav">
-    <a href="/login">Login</a>
-    <a href="/register">Register</a>
-    <a href="/browse-rooms">Browse Rooms</a>
-  </nav>
+  <div class="container">
+    <h1>Hostel Booking System</h1>
+    <p class="slogan">Your Comfort, Our Priority</p>
+    <nav>
+      <a th:href="@{/login}">Login</a>
+      <a th:href="@{/register}">Register</a>
+      <a th:href="@{/browse-rooms}">Browse Rooms</a>
+    </nav>
+  </div>
 </header>
+
 <section class="hero">
-  <h2>Book Your Hostel Room with Ease</h2>
-  <p>Secure. Fast. Simple.</p>
+  <div class="container">
+    <img src="/images/hostel-hero.jpg" alt="Hostel" class="hero-image">
+    <h2>Book Your Hostel Room with Ease</h2>
+    <p>Fast. Secure. Hassle-free Booking Experience.</p>
+  </div>
 </section>
+
+<section class="mission">
+  <div class="container">
+    <h3>Our Mission</h3>
+    <p>To provide a seamless, transparent and efficient hostel booking system for students.</p>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2025 Hostel Booking System. All rights reserved.</p>
+  </div>
+</footer>
 </body>
 </html>

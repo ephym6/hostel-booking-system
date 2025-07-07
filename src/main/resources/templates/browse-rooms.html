@@ -3,23 +3,59 @@
 <head>
   <meta charset="UTF-8">
   <title>Browse Rooms</title>
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/browse-rooms.css">
 </head>
 <body>
-<h2 class="section-title">Available Rooms</h2>
-<div id="room-list" class="card-container"></div>
+<header class="main-header">
+  <div class="container">
+    <h1>Browse Hostel Rooms</h1>
+    <nav class="main-nav">
+      <a href="/">Home</a>
+      <a href="/login">Login</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <h2 class="section-title">Available Rooms</h2>
+  <div id="room-list" class="room-grid">
+    <!-- Dynamic room cards will be inserted here -->
+  </div>
+</main>
+
+<footer class="footer">
+  <p>&copy; 2025 Hostel Booking System. All rights reserved.</p>
+</footer>
+
 <script>
   fetch('/api/rooms/available')
           .then(res => res.json())
           .then(data => {
             const container = document.getElementById('room-list');
-            data.forEach(room => {
-              container.innerHTML += `<div class='card'>
-            <h3>Type: ${room.type}</h3>
-            <p>Gender: ${room.gender}</p>
-            <p>Price: $${room.price}</p>
-          </div>`;
-            });
+            if (data.length === 0) {
+              container.innerHTML = '<p class="no-rooms">No rooms available at the moment. Please check back later.</p>';
+            } else {
+              const images = [
+                '/images/room1.jpg',
+                '/images/room2.jpg',
+                '/images/room3.jpg',
+                '/images/room4.jpg'
+              ];
+
+              data.forEach((room, i) => {
+                const img = images[i % images.length];
+                container.innerHTML += `
+            <div class='card'>
+              <img src='${img}' alt='Room Image' class='room-img'/>
+              <div class='card-body'>
+                <h3>${room.type}</h3>
+                <p><strong>Gender:</strong> ${room.gender}</p>
+                <p><strong>Price:</strong> $${room.price}</p>
+                <a href='/book-room' class='btn'>Book Now</a>
+              </div>
+            </div>`;
+              });
+            }
           });
 </script>
 </body>

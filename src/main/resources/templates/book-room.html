@@ -3,18 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <title>Book Room</title>
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/book-room.css">
 </head>
 <body>
-<div class="form-container">
-  <form action="/api/students/book" method="POST">
-    <h2>Book a Room</h2>
-    <label>Student ID:</label>
-    <input type="text" name="studentId" required>
-    <label>Room ID:</label>
-    <input type="text" name="roomId" required>
-    <button type="submit">Book</button>
-  </form>
-</div>
+<header class="main-header">
+  <h1>Book a Hostel Room</h1>
+  <nav class="main-nav">
+    <a href="/">Home</a>
+    <a href="/browse-rooms">Browse Rooms</a>
+    <a href="/login">Logout</a>
+  </nav>
+</header>
+
+<main>
+  <div class="form-container">
+    <form action="/api/students/book" method="POST">
+      <h2>Reservation Form</h2>
+      <label for="studentId">Student ID</label>
+      <input type="text" id="studentId" name="studentId" placeholder="Enter your student ID" required>
+
+      <label for="roomId">Room ID</label>
+      <input type="text" id="roomId" name="roomId" placeholder="Enter the room ID" required>
+
+      <button type="submit" class="btn">Book Room</button>
+    </form>
+  </div>
+</main>
+
+<footer>
+  <p>&copy; 2025 Hostel Booking System. All rights reserved.</p>
+</footer>
 </body>
 </html>
