@@ -23,7 +23,7 @@
   <div class="form-container">
     <form th:action="@{/book-room}" method="POST">
       <h2>Reservation Form</h2>
-      <label for="roomId">Room ID</label>
+      <label for="roomId">Room ID</label><p>******</p>
       <input type="hidden" id="roomId" name="roomId" th:value="${roomId}">
 
       <button type="submit" class="btn">Confirm Booking</button>

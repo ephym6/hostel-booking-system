@@ -45,6 +45,7 @@ public class BookingController {
         CustomStudentDetails userDetails = (CustomStudentDetails) auth.getPrincipal();
         Student student = userDetails.getStudent();
 
+        // ERROR HANDLING
         try {
             Booking booking = bookingService.createBooking(student.getId(), roomId);
             redirectAttributes.addFlashAttribute("message", "Room booked successfully with status: " + booking.getStatus());

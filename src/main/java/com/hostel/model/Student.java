@@ -5,7 +5,7 @@ import java.util.List;
 import jakarta.persistence.Entity;
 
 @Entity
-public class Student extends User {
+public class Student extends User {  //INHERITANCE
 
     private String gender;
 
@@ -23,6 +23,7 @@ public class Student extends User {
         this.gender = gender;
     }
 
+    // ENCAPSULATION
     // Getters and Setters
     public String getGender() {
         return gender;

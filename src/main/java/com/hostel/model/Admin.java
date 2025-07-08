@@ -3,7 +3,7 @@ package com.hostel.model;
 import jakarta.persistence.Entity;
 
 @Entity
-public class Admin extends User {
+public class Admin extends User { //INHERITANCE
 
     private String role;
 
@@ -17,6 +17,7 @@ public class Admin extends User {
         this.role = role;
     }
 
+    // ENCAPSULATION
     // Getters and Setters
     public String getRole() {
         return role;
